@@ -18,7 +18,7 @@ The Expense Reimbursement System (ERS) will manage the process of reimbursing em
 
 ## Features
 * Allows user to signup and login.
-* * user is able to view all of the products we have in our database on a single page.
+* user is able to view all of the products we have in our database on a single page.
 * View an individual product.
 * user will be able to see the title, cost, discount and description of the product.
 * Purchase a product.
