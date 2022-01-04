@@ -50,4 +50,11 @@ The Expense Reimbursement System (ERS) will manage the process of reimbursing em
 ## Contributors
 * Tulika Ghosh
 * James Lemaire
+* Michelle Harper
+* Derrice Wright
+* Aimen Altaiyeb
+* Rowel Selidio
+* Sameh Botros
+* Tareek Hamilton
+* A Noel
 
