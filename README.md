@@ -48,12 +48,4 @@ The Expense Reimbursement System (ERS) will manage the process of reimbursing em
 * use ng generate directive|pipe|service|class|guard|interface|enum|module.
 * Run ng build to build the project
 ## Contributors
-* Tulika Ghosh
-* James Lemaire
-* Michelle Harper
-* Derrice Wright
-* Aimen Altaiyeb
-* Rowel Selidio
-* Sameh Botros
-* Tareek Hamilton
-* A Noel
+ Tulika Ghosh, James Lemaire,Michelle Harper, Derrice Wright, Aimen Altaiyeb, Rowel Selidio, Sameh Botros, Tareek Hamilton, A Noel
