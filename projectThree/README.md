@@ -60,9 +60,6 @@ To-do list:
 * Ability to contact customer support (live chat)
 Getting Started
 -----
-git clone `YOUR GITHUB REPO`
 Contributors
 -----
-Scrum Master: Michelle Ng
-Team Leads: Rowel Selidio, James Lemaire, Aimen Altaiyeb
-Team Members: Derrice Wright, Tulika Ghosh, Anthony Johnson, Austin Noel, Tareeq Hamilton, Sameh Botros 
+Tulika Ghosh, Derrice Wright, Anthony Johnson, Austin Noel, Tareeq Hamilton, Sameh Botros, Rowel Selidio, James Lemaire, Aimen Altaiyeb
