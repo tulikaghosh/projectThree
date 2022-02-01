@@ -29,7 +29,7 @@ public class UserReviewPojo {
         this.rating = rating;
         this.review = review;
     }
-
+//--
     public int getReviewId() {
         return reviewId;
     }
