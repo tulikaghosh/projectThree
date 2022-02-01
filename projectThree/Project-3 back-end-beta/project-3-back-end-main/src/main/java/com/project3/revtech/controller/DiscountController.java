@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,27 +22,28 @@ import com.project3.revtech.service.DiscountService;
 
 @RestController
 @CrossOrigin
-@RequestMapping("discounts")
+@RequestMapping("discount")
 public class DiscountController {
 
 	@Autowired
 	DiscountService discountService;
 	
-	@GetMapping("all")
+	@GetMapping("all/discounts")
 	List<DiscountPojo> getAllDiscounts() throws ApplicationException{
 		return discountService.getAllDiscounts();
 	}
 	
-	@PostMapping("add")
+	@PostMapping("add/discounts")
 	DiscountPojo addDiscount( @Valid @RequestBody DiscountPojo discount) throws ApplicationException{
 		return discountService.addDiscount(discount);
 	}
 	
-	@DeleteMapping("remove/{discId}")
+	
+	@DeleteMapping("remove/discounts/{discId}")
 	boolean removeDiscount(@PathVariable("discId") int discId) throws ApplicationException{
 		return discountService.removeDiscount(discId);
 	}	
-	@PutMapping("update")
+	@PutMapping("update/discounts")
 	DiscountPojo updateDiscount(@Valid @RequestBody DiscountPojo discountPojo) throws ApplicationException{
 		return discountService.updateDiscount(discountPojo);
 	}

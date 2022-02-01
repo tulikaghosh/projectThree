@@ -24,7 +24,7 @@ import com.project3.revtech.request.LoginRequest;
 import com.project3.revtech.request.SignupRequest;
 import com.project3.revtech.response.JwtResponse;
 import com.project3.revtech.response.MessageResponse;
-import com.project3.revtech.security.service.UserDetailsImpl;
+import com.project3.revtech.service.UserDetailsImpl;
 import com.project3.revtech.dao.UserRepository;
 import com.project3.revtech.entity.ERole;
 import com.project3.revtech.entity.Role;
@@ -108,8 +108,8 @@ public class AuthController {
           roles.add(adminRole);
 
           break;
-        case "mod":
-          Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
+        case "emp":
+          Role modRole = roleRepository.findByName(ERole.ROLE_EMPLOYEE)
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
           roles.add(modRole);
 
