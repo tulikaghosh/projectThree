@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Transactional
@@ -49,6 +52,19 @@ public class CartItemServiceImpl implements CartItemService{
         }
 
         return item;
+    }
+
+    @Override
+    public CartItemPojo getCartItem(int item) throws ApplicationException {
+        return null;
+    }
+
+    @Override
+    public List<CartItemPojo> getAllItemsOfCart(int cartId) throws ApplicationException {
+//        List<CartItemPojo> returningItems = new ArrayList<CartItemPojo>();
+//        List<CartItem> allItems = cartItemRepository.findAllByCartId(cartId);
+//        for()
+        return null;
     }
 
     @Override
