@@ -1,6 +1,8 @@
 package com.project3.revtech.pojo;
 
 
+import java.util.Objects;
+
 public class CartItemPojo {
 
     private int cartItemId;
@@ -55,5 +57,18 @@ public class CartItemPojo {
                 ", productId=" + productId +
                 ", cartQty=" + cartQty +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CartItemPojo that = (CartItemPojo) o;
+        return cartItemId == that.cartItemId && cartId == that.cartId && productId == that.productId && cartQty == that.cartQty;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cartItemId, cartId, productId, cartQty);
     }
 }

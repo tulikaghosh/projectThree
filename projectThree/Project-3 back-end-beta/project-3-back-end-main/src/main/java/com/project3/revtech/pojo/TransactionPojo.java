@@ -1,6 +1,7 @@
 package com.project3.revtech.pojo;
 
 import java.sql.Timestamp;
+import java.util.Objects;
 
 public class TransactionPojo {
 
@@ -45,5 +46,18 @@ public class TransactionPojo {
                 ", transactionDate=" + transactionDate +
                 ", cartId=" + cartId +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TransactionPojo that = (TransactionPojo) o;
+        return transactionId == that.transactionId && cartId == that.cartId && transactionDate.equals(that.transactionDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(transactionId, transactionDate, cartId);
     }
 }
