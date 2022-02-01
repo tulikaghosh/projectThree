@@ -19,7 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.project3.revtech.security.jwt.AuthEntryPointJwt;
 import com.project3.revtech.security.jwt.AuthTokenFilter;
-import com.project3.revtech.security.service.UserDetailsServiceImpl;
+import com.project3.revtech.service.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity
@@ -69,22 +69,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       .authorizeRequests().antMatchers("/api/product-discount").permitAll().and()
       .authorizeRequests().antMatchers("/api/product-discount/**").permitAll().and()
       .authorizeRequests().antMatchers("/api/products").permitAll().and()
+      .authorizeRequests().antMatchers("/api/products/**").permitAll().and()
       .authorizeRequests().antMatchers("/api/auth/signup").permitAll().and()
       .authorizeRequests().antMatchers("/combined/Disc/Products").permitAll().and()
 	  .authorizeRequests().antMatchers("/api/products/{pid}").permitAll().and()
 	  .authorizeRequests().antMatchers("/file/upload").permitAll().and()
-      .authorizeRequests().antMatchers("/discounts/update").permitAll().and()
-      .authorizeRequests().antMatchers("/discounts/remove/{discId}").permitAll().and()
-      .authorizeRequests().antMatchers("/discounts/add").permitAll().and()
+      .authorizeRequests().antMatchers("/discount/update/discounts/**").permitAll().and()
+      .authorizeRequests().antMatchers("/discount/remove/discounts/{discId}/**").permitAll().and()
+      .authorizeRequests().antMatchers("/discount/add/discounts/**").permitAll().and()
+      .authorizeRequests().antMatchers("/discount/all/discounts/**").permitAll().and()
+      .authorizeRequests().antMatchers("/discount/all/discountedProducts/**").permitAll().and()
       .authorizeRequests().antMatchers("/api/transaction").permitAll().and()
-      .authorizeRequests().antMatchers("/api/transaction/**").permitAll().and()
+       .authorizeRequests().antMatchers("/api/transaction/**").permitAll().and()
+       .authorizeRequests().antMatchers("/api/purchased-items/**").permitAll().and()
+       .authorizeRequests().antMatchers("/api/reviews/**").permitAll().and()
       .authorizeRequests().antMatchers("/api/cart-items").permitAll().and()
       .authorizeRequests().antMatchers("/api/cart-items/**").permitAll().and()
       .authorizeRequests().antMatchers("/file").permitAll().and()
       .authorizeRequests().antMatchers("/file/**").permitAll().and()
       .authorizeRequests().antMatchers("/api/cart-and-items").permitAll().and()
       .authorizeRequests().antMatchers("/api/cart-and-items/**").permitAll().and()
-      .authorizeRequests().antMatchers("/api/cart").permitAll().and()
+       .authorizeRequests().antMatchers("/api/cart").permitAll().and()
+       .authorizeRequests().antMatchers("/api/cart/**").permitAll().and()
       .authorizeRequests().antMatchers("/combined/Disc/Products").permitAll().and()
       .authorizeRequests().antMatchers("/api/test/**").permitAll().and()
       .authorizeRequests().antMatchers("/cart/{bid}").permitAll().and()
@@ -93,6 +99,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	   http.headers().frameOptions().disable();
 
 		  
+	   
 	   http.addFilterBefore(authenticationJwtTokenFilter(),
 	   UsernamePasswordAuthenticationFilter.class);
 		 
