@@ -5,9 +5,9 @@ public class UserPojo {
 	 private int user_id;
 	 private String firstName;
 	 private String lastName;
-     private String username;
-     private String email;
-     private String password;
+         private String username;
+         private String email;
+         private String password;
 	 private String address;
 	 private String contact;
 	public UserPojo() {
