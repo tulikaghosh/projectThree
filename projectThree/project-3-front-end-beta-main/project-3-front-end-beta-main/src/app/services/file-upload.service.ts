@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import {Instance} from "../models/Instance";
+import { TokenStorageService } from './token-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,14 @@ export class FileUploadService {
 
   public files: any[] = [];
   baseUrl = Instance.url + "/file";
+  header = {};
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, tokenService: TokenStorageService) {
+    this.header = {
+      headers: new HttpHeaders()
+        .set('Authorization',  `Bearer ${tokenService.getToken()}`)
+    }
     this.files = [];
   }
 
@@ -34,7 +40,7 @@ export class FileUploadService {
     //   responseType: 'text'
     // };
 
-    return this.http.post<any>(this.baseUrl + '/upload', formData);
+    return this.http.post<any>(this.baseUrl + '/upload', formData, this.header);
   }
   // const formData = new FormData();
   // for (const file of this.files) {
