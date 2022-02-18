@@ -1,13 +1,16 @@
 <section class="section-content padding-y bg">
-  <div class="container">
+  <div class="container" *ngIf="productLoaded">
     <article class="card">
       <div class="card-body">
         <div class="row">
-          <aside class="col-md-6">
+          <aside class="col-md-7">
             <article class="gallery-wrap">
-              <div class="card img-big-wrap">
-                <a href="#"> <img [src]="productAndDiscount.imageUrl"></a>
-              </div> <!-- card img-big-wrap.// -->
+              <div>
+                <div class="img-big-wrap">
+                  <a href="#"> <img [src]="productAndDiscount.imageUrl"></a>
+                </div> <!-- card img-big-wrap.// -->
+              </div>
+
               <!-- <div class="thumbs-wrap">
                   <a href="#" class="item-thumb"> <img src="assets/images/items/3.jpg"></a>
                   <a href="#" class="item-thumb"> <img src="assets/images/items/3.jpg"></a>
@@ -31,79 +34,153 @@
                 <div> {{productAndDiscount.productDescription}} </div>
               </div>
               <div class="form-group">
-                <label class="text-muted">Available sizes</label>
-                <div>
-                  <label class="js-check btn btn-check mr-1">
-                    <input type="radio" name="option_size" value="option1" checked="">
-                    <span>Small</span>
-                  </label>
-                  <label class="js-check btn btn-check mr-1">
-                    <input type="radio" name="option_size" value="option1">
-                    <span>Medium</span>
-                  </label>
-                  <label class="js-check btn btn-check mr-1">
-                    <input type="radio" name="option_size" value="option1">
-                    <span>Large</span>
-                  </label>
-                </div>
               </div>
               <div class="mb-3">
-<!--                <var class="price h4">${{productAndDiscount.productCost}}</var> <br>-->
-                <p class="card-text">{{productAndDiscount.productCost-productAndDiscount.productCost*productAndDiscount.discountPercentage | currency }}
-                  <s>{{productAndDiscount.productCost |
-                    currency}}</s>
-                </p>
+                <div >
+                  <!--              <var class="price h4">${{productAndDiscount.productCost}}</var> <br>-->
+                  <h6 class="card-text">{{productAndDiscount.productCost-productAndDiscount.productCost*(productAndDiscount.discountPercentage / 100) | currency }}</h6>
+                  <h6 class ="old-product-price" *ngIf="productAndDiscount.discountPercentage > 1.0" >{{productAndDiscount.productCost | currency}} </h6>
+                </div>
               </div> <!-- price-detail-wrap .// -->
               <div class="mb-4">
-                <button class="btn btn-danger" (click)="addToCart()">Add to cart</button>
+                <div class="counter" *ngIf="productAndDiscount.productQty > 0">
+                  <span class="down" (click)='decreaseCount()'>-</span>
+                  <input type="text" [(ngModel)]="counter" (change)="qtyChange()">
+                  <span class="up"  (click)='increaseCount()'>+</span>
+                </div>
+                <span class="out-of-stock" *ngIf="productAndDiscount.productQty < 1">This item is out of stock</span>
+
+                <button class="btn btn-danger" (click)="goToCheckout()">Go to cart</button><br><br>
+                <h4 class="item-details ">Available: {{productAndDiscount.productQty}}</h4>
+
               </div>
             </article> <!-- product-info-aside .// -->
           </main> <!-- col.// -->
         </div> <!-- row.// -->
       </div> <!-- card-body.// -->
     </article>
+    
+    <h2 class="m-5">Submit Review</h2>
     <article class="card mt-5">
       <div class="card-body">
-        <!-- <div class="row">
-            <aside class="col-md-6">
-                <h5>Parameters</h5>
-                <dl class="row">
-                      <dt class="col-sm-3">Display</dt>
-                      <dd class="col-sm-9">13.3-inch LED-backlit display with IPS</dd>
+        <div class="container">
+          <form  (ngSubmit)="postReview()">
 
-                      <dt class="col-sm-3">Processor</dt>
-                      <dd class="col-sm-9">2.3GHz dual-core Intel Core i5</dd>
+            <label for="title">Review Title </label>
+            <input type="text" id="title" name="title" placeholder="Review Title:" [(ngModel)]="reviewForm.title">
 
-                      <dt class="col-sm-3">Camera</dt>
-                      <dd class="col-sm-9">720p FaceTime HD camera</dd>
+            <label for="rating">Rating</label>
+            <span *ngFor="let n of starRating()" type="hidden" class="fa fa-star star-active" (click)="updateReviewRating(n)"></span>
+            <span *ngFor="let n of negativeStarRating()" type="hidden" class="fa fa-star star-inactive" (click)="updateReviewRating(n + this.reviewForm.rating)"></span>
 
-                      <dt class="col-sm-3">Memory</dt>
-                      <dd class="col-sm-9">8 GB RAM or 16 GB RAM</dd>
 
-                      <dt class="col-sm-3">Graphics</dt>
-                      <dd class="col-sm-9">Intel Iris Plus Graphics 640</dd>
-                </dl>
-            </aside>
-            <aside class="col-md-6">
-                <h5>Features</h5>
-                <ul class="list-check">
-                    <li>Best performance of battery</li>
-                    <li>5 years warranty for this product</li>
-                    <li>Amazing features and high quality</li>
-                    <li>Best performance of battery</li>
-                    <li>5 years warranty for this product</li>
-                </ul>
-            </aside>
-        </div> row.// -->
+            <br>
+            <br>
+
+            <label for="subject">Review</label>
+            <textarea id="subject"
+                      name="subject"
+                      placeholder="Write your review here"
+                      style="height:200px" [(ngModel)]="reviewForm.review"></textarea>
+
+            <input type="submit" value="Submit">
+
+          </form>
+        </div>
         <hr>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <div class="container-fluid px-1 py-5 mx-auto">
+          <div class="row justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
+              <div class="card">
+                <div class="row justify-content-left d-flex">
+                  <div class="col-md-4 d-flex flex-column">
+                    <div class="rating-box">
+                      <h1 class="pt-4">{{averageRating}}</h1>
+                      <p class="">out of 5</p>
+                    </div>
+                    <div>
+                      <span *ngFor="let n of Rating(averageRating)" class="fa fa-star star-active "></span>
+                      <span *ngFor="let n of negativeRating(averageRating)" class="fa fa-star star-inactive "></span>
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="rating-bar0 justify-content-center">
+                      <table class="text-left mx-auto">
+                        <tr>
+                          <td class="rating-label">Excellent</td>
+                          <td class="rating-bar">
+                            <div class="bar-container">
+                              <div class="bar-5"></div>
+                            </div>
+                          </td>
+                          <td class="text-right">{{reviewRatings.one}}</td>
+                        </tr>
+                        <tr>
+                          <td class="rating-label">Good</td>
+                          <td class="rating-bar">
+                            <div class="bar-container">
+                              <div class="bar-4"></div>
+                            </div>
+                          </td>
+                          <td class="text-right">{{reviewRatings.four}}</td>
+                        </tr>
+                        <tr>
+                          <td class="rating-label">Average</td>
+                          <td class="rating-bar">
+                            <div class="bar-container">
+                              <div class="bar-3"></div>
+                            </div>
+                          </td>
+                          <td class="text-right">{{reviewRatings.three}}</td>
+                        </tr>
+                        <tr>
+                          <td class="rating-label">Poor</td>
+                          <td class="rating-bar">
+                            <div class="bar-container">
+                              <div class="bar-2"></div>
+                            </div>
+                          </td>
+                          <td class="text-right">{{reviewRatings.two}}</td>
+                        </tr>
+                        <tr>
+                          <td class="rating-label">Terrible</td>
+                          <td class="rating-bar">
+                            <div class="bar-container">
+                              <div class="bar-1"></div>
+                            </div>
+                          </td>
+                          <td class="text-right">{{reviewRatings.one}}</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngFor="let review of reviews" class="card">
+                <div class="row d-flex">
+<!--                  <div class=""> <img class="profile-pic"> </div>-->
+                  <div class="d-flex flex-column">
+                    <h3 class="mt-2 mb-0">{{review.firstName + ' ' + review.lastName}}</h3>
+                    <div >
+                      <p class="text-left">
+                        <span class="text-muted">{{review.rating}}</span>
+                        <span *ngFor="let n of Rating(review.rating)" class="material-icons">grade</span>
+                        <span *ngFor="let n of negativeRating(review.rating)" class="material-icons">grade</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="ml-auto">
+                    <p class=" pt-5 pt-sm-3">{{review.date}}</p>
+                  </div>
+                </div>
+                <div class="row text-left">
+                  <h4 class="blue-text mt-3">{{review.title}}</h4>
+                  <p class="content">{{review.review}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div> <!-- card-body.// -->
     </article>
   </div>

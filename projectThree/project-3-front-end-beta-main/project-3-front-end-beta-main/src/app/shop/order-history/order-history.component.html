@@ -1,0 +1,73 @@
+<section id="Checkout" class="Checkout">
+
+  <div class="container">
+
+    <h3>Purchase History</h3>
+
+    <div class="row">
+      <div class="col-lg-8 entries">
+
+        <div class="entry" *ngFor="let item of purchasedItemProduct">
+          <div class="entry-details  d-flex flex-row">
+            <div class="d-flex flex-column my-cloumn1">
+              <div class="entry-img">
+                <img [src]="item.product.imageUrl" width=300px height=" auto " class="img-fluid ">
+              </div>
+            </div>
+            <div class="my-cloumn2 d-flex flex-column align-items-start ">
+              <h5 class="entry-title ">{{item.product.productDescription}}</h5>
+              <div class="entry-content ">
+                <h4 class="item-details ">Category: {{item.product.productCategory}}
+                </h4><br>
+                <h4 class="item-details ">Purchased: {{item.itemQty}}</h4>
+                <br>
+              </div>
+              <div class="entry-meta ">
+              </div>
+            </div>
+            <div class="entry-item-cost d-flex flex-column align-item-end my-cloumn3 active ">
+              <div class="contact-shop ml-auto d-flex flex-row ">
+                <h6>Sold by Rev-Tech.com</h6>
+              </div>
+              <div class="d-flex flex-row align-items-start ">
+
+
+              </div>
+              <h6 class="d-flex flex-row item-sale-price align-items-end ml-auto ">
+                ${{ item.purchaseCost * item.itemQty | number :'1.2-2'}} </h6>
+              <br>
+              <div class="item-decrription "> Date Purchased: <br>
+                {{ item.purchaseDate }}</div> <br>
+            </div>
+          </div>
+        </div>
+        <!-- End Checkout entry -->
+      </div>
+      <!-- ---------------------------------------------------------------------------------------- -->
+      <div class="col-lg-4 ">
+        <div class="sidebar ">
+
+          <div class="sidebar-item categories ">
+
+            <div class="item-decrription ">Thank you for being a loyal customer! <br>
+            </div>
+            <br>
+            <div class="item-decrription "> The total cost of the purchases you made so far is: <br>
+            </div>
+            <br>
+            <h5 class="d-flex flex-row item-sale-price align-items-end ml-auto ">
+              ${{ calculateCost() | number :'1.2-2'}} </h5>
+
+
+
+
+
+          </div>
+        </div>
+        <!-- End sidebar -->
+      </div>
+      <!-- End Checkout sidebar -->
+    </div>
+  </div>
+</section>
+<!-- End Checkout Section -->

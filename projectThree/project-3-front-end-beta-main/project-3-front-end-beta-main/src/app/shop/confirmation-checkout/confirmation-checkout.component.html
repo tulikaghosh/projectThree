@@ -1,0 +1,88 @@
+<section id="Checkout" class="Checkout">
+
+  <div class="container">
+
+    <div class="alert alert-success" role="alert">
+      Your order has been confirmed and it will arrive soon! <br>
+      Thanks for shopping at Rev-Tech.
+    </div>
+
+    <h3>Your order number is 000{{transId}}</h3>
+
+    <div class="row">
+      <div class="col-lg-8 entries">
+
+        <div class="entry" *ngFor="let item of purchasedItemProduct">
+          <div class="entry-details  d-flex flex-row">
+            <div class="d-flex flex-column my-cloumn1">
+              <div class="entry-img">
+                <img [src]="item.product.imageUrl" width=300px height=" auto " class="img-fluid ">
+              </div>
+            </div>
+            <div class="my-cloumn2 d-flex flex-column align-items-start ">
+              <h5 class="entry-title ">{{item.product.productDescription}}</h5>
+              <div class="entry-content ">
+                <h4 class="item-details ">Category: {{item.product.productCategory}}
+                </h4><br>
+                <h4 class="item-details ">Purchased: {{item.itemQty}}</h4>
+                <br>
+              </div>
+              <div class="entry-meta ">
+              </div>
+            </div>
+            <div class="entry-item-cost d-flex flex-column align-item-end my-cloumn3 active ">
+              <div class="contact-shop ml-auto d-flex flex-row ">
+                <h6>Sold by Rev-Tech.com</h6>
+              </div>
+              <div class="d-flex flex-row align-items-start ">
+
+                <!--                <input type="number" class="addItem" min="1" [max]="item.product.productQty"-->
+                <!--                  name="item.cartQty" [value]="item.cartQty"-->
+                <!--                  (change)="changeQuantity(item, $event.target)"> <br>-->
+
+
+                <!-- <select class="form-select " aria-label="Default select example" -->
+                <!-- (change)="changeQuantity(item, $event.target)"> -->
+                <!-- <option id="itemQty" name="itemQty" selected>{{item.cartQty}}</option> -->
+                <!-- <ng-container *ngFor="let itemN of itemNum"> -->
+                <!-- <option *ngIf="itemN <= item.product.productQty" [value]="itemN"> -->
+                <!-- {{itemN}} -->
+                <!-- </option> -->
+                <!-- </ng-container> -->
+                <!-- </select> -->
+
+              </div>
+              <h6 class="d-flex flex-row item-sale-price align-items-end ml-auto ">
+                ${{ item.purchaseCost * item.itemQty | number :'1.2-2'}} </h6>
+            </div>
+          </div>
+        </div>
+        <!-- End Checkout entry -->
+      </div>
+      <!-- ---------------------------------------------------------------------------------------- -->
+      <div class="col-lg-4 ">
+        <div class="sidebar ">
+
+          <div class="sidebar-item categories ">
+
+            <div class="item-decrription "> Total Cost: <br>
+             </div>
+            <h6 class="d-flex flex-row item-sale-price align-items-end ml-auto ">
+              ${{ calculateCost() | number :'1.2-2'}} </h6>
+
+
+
+            <div class="item-decrription "> Date Purchased: <br>
+              {{ purchasedItemProduct[0].purchaseDate }}</div> <br>
+
+
+
+          </div>
+        </div>
+        <!-- End sidebar -->
+      </div>
+      <!-- End Checkout sidebar -->
+    </div>
+  </div>
+</section>
+<!-- End Checkout Section -->

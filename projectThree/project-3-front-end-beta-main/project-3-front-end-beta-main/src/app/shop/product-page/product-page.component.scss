@@ -1,0 +1,199 @@
+i {
+  font-size: 22px;
+  cursor: pointer;
+}
+.counter {
+  width: 150px;
+
+  display: flex;
+}
+.counter input {
+  width: 50px;
+  border: 0;
+  line-height: 30px;
+  font-size: 20px;
+  text-align: center;
+
+  color: #e53935;
+  appearance: none;
+  outline: 0;
+}
+.counter span {
+  display: block;
+  font-size: 25px;
+  padding: 0 10px;
+  cursor: pointer;
+  color: #e53935;
+  user-select: none;
+}
+.old-product-price {
+  text-decoration: line-through;
+}
+body {
+  background-image: linear-gradient(#4a148c, #e53935);
+  background-repeat: no-repeat;
+  color: #000;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+a:hover {
+  color: #455a64;
+}
+
+.card {
+  border-radius: 5px;
+  background-color: #fff;
+  padding-left: 60px;
+  padding-right: 60px;
+  margin-top: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.rating-box {
+  width: 130px;
+  height: 130px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #fbc02d;
+  color: #fff;
+}
+
+.rating-label {
+  font-weight: bold;
+}
+
+.rating-bar {
+  width: 300px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.bar-5 {
+  width: 70%;
+  height: 13px;
+  background-color: #fbc02d;
+  border-radius: 20px;
+}
+
+.bar-4 {
+  width: 30%;
+  height: 13px;
+  background-color: #fbc02d;
+  border-radius: 20px;
+}
+
+.bar-3 {
+  width: 20%;
+  height: 13px;
+  background-color: #fbc02d;
+  border-radius: 20px;
+}
+
+.bar-2 {
+  width: 10%;
+  height: 13px;
+  background-color: #fbc02d;
+  border-radius: 20px;
+}
+
+.bar-1 {
+  width: 0%;
+  height: 13px;
+  background-color: #fbc02d;
+  border-radius: 20px;
+}
+
+td {
+  padding-bottom: 10px;
+}
+
+.star-active {
+  color: #fbc02d;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.star-active:hover {
+  color: #f9a825;
+  cursor: pointer;
+}
+
+.star-inactive {
+  color: #cfd8dc;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.blue-text {
+  color: #0091ea;
+}
+
+.content {
+  font-size: 18px;
+}
+
+.profile-pic {
+  width: 90px;
+  height: 90px;
+  border-radius: 100%;
+  margin-right: 30px;
+}
+
+.vote {
+  cursor: pointer;
+}
+/* Style inputs with type="text", select elements and textareas */
+input[type="text"],
+select,
+textarea {
+  width: 100%; /* Full width */
+  padding: 12px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+}
+
+/* Style the submit button with a specific background color etc */
+input[type="submit"] {
+  background-color: #dc3545;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type="submit"]:hover {
+  background-color: #dc3545;
+}
+
+/* Add a background color and some padding around the form */
+
+.out-of-stock {
+  display: block;
+  font-size: 25px;
+  padding: 0 10px;
+  cursor: pointer;
+  color: dc3545;
+  user-select: none;
+}
