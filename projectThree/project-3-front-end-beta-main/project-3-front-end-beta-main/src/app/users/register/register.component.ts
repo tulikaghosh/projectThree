@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { FileUploadService } from 'src/app/services/file-upload.service';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +17,7 @@ export class RegisterComponent implements OnInit {
     email: null,
     password: null,
     address: null, 
+    userImage: [''],
     contact: null
   };
   isSuccessful = false;
@@ -22,19 +25,21 @@ export class RegisterComponent implements OnInit {
   errorMessage = '';
 
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router, private fileUploadService: FileUploadService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-    const { first_name, last_name, username, email, password, address, contact } = this.form;
+    const { first_name, last_name, username, email, password, address, contact, userImage } = this.form;
 
-    this.authService.register(first_name, last_name, username, email, password, address, contact).subscribe(
+    this.authService.register(first_name, last_name, username, email, password, address, contact, userImage).subscribe(
       data => {
-        console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        if((this.isSuccessful = true) || (this.isSignUpFailed = false)) {
+          this.router.navigate(['login'])
+        }
       },
       err => {
         this.errorMessage = err.error.message;
@@ -42,5 +47,22 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
+
+  public uploadImage(imageInput: any) {
+    const reader = new FileReader();
+
+    this.fileUploadService.onUpload(imageInput.target.files[0]).subscribe({
+      next: async (response) => {
+        this.form.userImage = response;       
+      },
+      error: err => {
+      }
+    })
+
+  }
+
+
+
+
 
 }

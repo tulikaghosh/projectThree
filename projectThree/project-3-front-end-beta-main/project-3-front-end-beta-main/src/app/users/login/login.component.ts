@@ -49,27 +49,27 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveUser(data);
 
         this.isLoginFailed = false;
-        this.isLoggedIn = true;
+       
         this.roles = this.tokenStorage.getUser().roles;
-        this.username = this.tokenStorage.getUser().username;
-        setTimeout(() => {
-          this.router.navigate(['/product']);
-       }, 3000);
-       setTimeout(() => {
-        this.reloadPage();
-     }, 3000);
+        this.router.navigate(['/product']);
       },
       err => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
     );
-
-
   }
 
   reloadPage(): void {
     window.location.reload();
+  }
+
+  register() {
+    this.router.navigate(['/register']);
+  }
+
+  product() {
+    this.router.navigate(['/product']);
   }
 
 }

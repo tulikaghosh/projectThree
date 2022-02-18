@@ -26,94 +26,98 @@
     Please login.
   </ng-template> -->
 <br>
-  <div class="container bootstrap snippets bootdey">
+<div class="container bootstrap snippets bootdey">
     <div class="panel-body inf-content">
         <div class="row">
-            <div class="col-md-4">
-                <img alt="" style="width:400px;" title="" class="img-circle img-thumbnail isTooltip" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" data-original-title="Usuario">
-            </div>
-            <br>
-            <div class="col-md-6">
-                <h2><strong>User Information</strong></h2><br>
-                <div class="table-responsive">
+        </div>
+        <br>
+        <div class="col-md-6">
+            <h2><strong>User Information</strong></h2><br>
+            <div class="table-responsive">
                 <table class="table table-user-information">
                     <tbody>
-                        <tr>        
-                        
-                        </tr>
-                        <tr>    
+                        <tr>
                             <td>
                                 <strong>
-                                    <span class="glyphicon glyphicon-user  text-primary"></span>    
-                                    First Name: {{ first_name }}
-                                                
+                                    <span class="glyphicon glyphicon-asterisk text-primary"></span>
+                                    ID #:
                                 </strong>
                             </td>
-                            <td class="text-primary">
-                                {{mainUser.userFirstName}}    
+                            <td class="text-secondary">
+                                {{currentUser.user_id}}
                             </td>
                         </tr>
-                        <tr>        
+                        <tr>
                             <td>
+
                                 <strong>
-                                    <span class="glyphicon glyphicon-cloud text-primary"></span>  
-                                    Last Name : {{ last_name }}                                                
+                                    <span class="glyphicon glyphicon-user  text-primary"></span>
+                                    First Name:
                                 </strong>
                             </td>
-                            <td class="text-primary">
-                                {{mainUser.userLastName}}
+                            <td class="text-secondary">
+                                {{currentUser.first_name}}
+
                             </td>
                         </tr>
-    
-                        <tr>        
+                        <tr>
                             <td>
                                 <strong>
-                                    <span class="glyphicon glyphicon-bookmark text-primary"></span> 
-                                    Username: {{ username }}                                                
+                                    <span class="glyphicon glyphicon-cloud text-primary"></span>
+                                    Last Name:
                                 </strong>
                             </td>
-                            <td class="text-primary">
-                                {{mainUser.userName}} 
+                            <td class="text-secondary">
+                                {{currentUser.last_name}}
                             </td>
                         </tr>
-                        <tr>        
+                        <tr>
                             <td>
                                 <strong>
-                                    <span class="glyphicon glyphicon-envelope text-primary"></span> 
-                                    Email: {{ email }} 
+                                    <span class="glyphicon glyphicon-bookmark text-primary"></span>
+                                    Username:
                                 </strong>
                             </td>
-                            <td class="text-primary">
-                                {{mainUser.userEmail}}
+                            <td class="text-secondary">
+                                {{currentUser.username}}
                             </td>
-                        </tr>     
-                        <tr>        
+                        </tr>
+                        <tr>
                             <td>
                                 <strong>
-                                    <span class="glyphicon glyphicon-envelope text-primary"></span> 
-                                    Address: {{ address }} 
+                                    <span class="glyphicon glyphicon-envelope text-primary"></span>
+                                    Email:
                                 </strong>
                             </td>
-                            <td class="text-primary">
-                                {{mainUser.userAddress}}
+                            <td class="text-secondary">
+                                {{currentUser.email}}
                             </td>
-                        </tr>  
-                        <tr>        
+                        </tr>
+                        <tr>
                             <td>
                                 <strong>
-                                    <span class="glyphicon glyphicon-envelope text-primary"></span> 
-                                    Contact: {{ contact }} 
+                                    <span class="glyphicon glyphicon-envelope text-primary"></span>
+                                    Address:
                                 </strong>
                             </td>
-                            <td class="text-primary">
-                                {{mainUser.userContact}}
+                            <td class="text-secondary">
+                                {{currentUser.address}}
                             </td>
-                        </tr> 
-                                     
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>
+                                    <span class="glyphicon glyphicon-envelope text-primary"></span>
+                                    Contact:
+                                </strong>
+                            </td>
+                            <td class="text-secondary">
+                                {{currentUser.contact}}
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
-                </div>
             </div>
         </div>
     </div>
-    </div>  
+</div>

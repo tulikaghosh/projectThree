@@ -136,7 +136,6 @@
               [(ngModel)]="form.address"
               required
               minlength="3"
-              maxlength="20"
               #address="ngModel"
               placeholder="123 Enterprise Way, Palo Alto, CA 94020"
             />
@@ -171,6 +170,11 @@
           </div>
          </div>
         </div>
+        <!-- <div>
+          <label for="userImage" class="form-label"> Select Profile Picture</label>
+          <input #imageInput type="file" class="form-control" id="InputUserImgUrl"
+            aria-describedby="userImageUrlHelp" accept="image/*" (change)="uploadImage($event)">
+          </div> -->
           &nbsp;&nbsp;
           <div class="form-group">
             <button [disabled]="f.invalid" class="btn btn-danger btn-block">Sign Up</button> 
