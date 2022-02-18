@@ -1,13 +1,14 @@
 export class User {
 
-    userId: number = 0;
-    userEmail: string = "";
-    userName: string = "";
-    userPassword: string = "";
-    userFirstName: string = "";
-    userLastName: string = "";
-    userAddress: string = "";
+    user_id: number = 0;
+    email: string = "";
+    username: string = "";
+    password: string = "";
+    first_name: string = "";
+    last_name: string = "";
+    address: string = "";
     userType: string = "";
-    userContact: string = "";
+    contact: string = "";
+    imageUrl: string = "";
     userRemoved: boolean = false;
 }
