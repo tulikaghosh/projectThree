@@ -21,7 +21,8 @@ export class HeaderComponent implements OnInit {
     last_name: null,
     email: null,
     address: null, 
-    contact: null
+    contact: null,
+    userImage: ['']
   };
   isLoginFailed = false;
   errorMessage = '';
@@ -30,85 +31,53 @@ export class HeaderComponent implements OnInit {
   isLoggedIn = false;
   username?: string;
   showAdmin = false;
+  showUser = false;
   currentUser: any;
   first_name?: string;
 
+  searchQuery: string="";
+  
   constructor(private router: Router, 
     private tokenStorageService: TokenStorageService,
     private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
-    if (this.tokenStorageService.getToken()) {
-      this.isLoggedIn = true;
-      this.roles = this.tokenStorageService.getUser().roles;
-      this.currentUser = this.tokenStorageService.getUser();
-    }
-    if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
-      this.username = user.username;
-      this.showAdmin = this.roles.includes('ROLE_ADMIN');
-      this.first_name = user.first_name;
-    }
-    this.currentUser = this.tokenStorageService.getUser();
+  //   this.tokenStorageService.isLoggedIn = !!this.tokenStorageService.getToken();
+  //   if (this.tokenStorageService.getToken()) {
+  //     this.isLoggedIn = true;
+  //     this.roles = this.tokenStorageService.getUser().roles;
+  //     this.currentUser = this.tokenStorageService.getUser();
+  //   }
+  //   if (this.tokenStorageService.isLoggedIn) {
+  //     // const user = this.tokenStorageService.getUser();
+  //     // this.roles = user.roles;
+  //     // this.username = user.username;
+  //     // this.showAdmin = this.roles.includes('ROLE_ADMIN');
+  //     // this.showUser = this.roles.includes('ROLE_USER');
+  //     // this.first_name = user.first_name;
+  //   }
+  //   this.currentUser = this.tokenStorageService.getUser();
   }
 
   logout(): void {
     this.tokenStorageService.signOut();
-    window.location.reload();
+    this.showAdmin = false; 
+    this.showUser = false; 
+    this.router.navigate(['/login']);
   }
 
-  
-  onSubmit(): void {
-    const { username, password } = this.form;
+  isLogged() {
+    this.first_name = this.tokenStorageService.getUser().first_name;
 
-    this.authService.login(username, password).subscribe(
-      data => {
-        this.tokenStorageService.saveToken(data.accessToken);
-        this.tokenStorageService.saveUser(data);
-
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
-        this.roles = this.tokenStorageService.getUser().roles;
-        this.username = this.tokenStorageService.getUser().username;
-        setTimeout(() => {
-          this.router.navigate(['/product']);
-       }, 3000);
-       setTimeout(() => {
-        this.reloadPage();
-     }, 3000);
-      },
-      err => {
-        this.errorMessage = err.error.message;
-        this.isLoginFailed = true;
-      }
-    );
+    return this.tokenStorageService.isLoggedIn;
   }
 
-  reloadPage(): void {
-    window.location.reload();
+  isShowUser(){
+    return this.tokenStorageService.getUser().roles.includes('ROLE_USER');
   }
-  onSubmitregister(): void {
-    const { first_name, last_name, username, email, password, address, contact } = this.form;
 
-    this.authService.register(first_name, last_name, username, email, password, address, contact).subscribe(
-      data => {
-        console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-        setTimeout(() => {
-          this.router.navigate(['/product']);
-       }, 3000);
-       setTimeout(() => {
-        this.reloadPage();
-     }, 3000);
-      },
-      err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
-      }
-    );
+  isShowAdmin(){
+    return this.tokenStorageService.getUser().roles.includes('ROLE_ADMIN');
   }
 
 }
