@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './users/admin/admin.component';
@@ -12,6 +12,8 @@ import { CheckoutComponent } from './shop/checkout/checkout.component';
 import { StoreProductComponent } from './shop/store-product/store-product.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { ProductPageComponent } from './shop/product-page/product-page.component';
+import { ConfirmationCheckoutComponent } from './shop/confirmation-checkout/confirmation-checkout.component';
+import { OrderHistoryComponent } from './shop/order-history/order-history.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +26,14 @@ import { ProductPageComponent } from './shop/product-page/product-page.component
     StoreProductComponent,
     ProfileComponent,
     ProductPageComponent,
+    ConfirmationCheckoutComponent,
+    OrderHistoryComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ReactiveFormsModule,
   ],
